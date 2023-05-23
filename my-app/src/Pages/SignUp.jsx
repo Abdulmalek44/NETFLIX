@@ -1,16 +1,27 @@
 import React, { useState } from 'react'
 import img from '../assets/signup.jpg'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { UserAuth } from '../Context/AuthContext'
 
 const SignUp = () => {
+    //user ertyutrewrtyuk
+    const { signUp } = UserAuth()
+    const navigate = useNavigate()
 
     //States
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorEmail, setErrorEmail] = useState('');
+    const [errorName, setErrorName] = useState('');
     const [errorPassword, setErrorPassword] = useState('');
 
     //Functions
+    const handleNameChange = (e) => {
+        const value = e.target.value
+        setName(value)
+
+    }
     const handleEmailChange = (e) => {
         const value = e.target.value
         setEmail(value)
@@ -21,21 +32,24 @@ const SignUp = () => {
         setPassword(value)
     }
 
-    const handleClick = (e) => {
+    const handleClick = async (e) => {
         e.preventDefault()
 
-        if (email === '') {
-            setErrorEmail('Please enter your email.');
-        }
-        else {
-            setErrorEmail('')
-        }
+        if (name.length < 4) { setErrorName('Name should be at least four characters.'); }
+        else { setErrorName('') }
 
-        if (password.length < 4) {
-            setErrorPassword('Password should be at least four characters.');
+        if (email === '') { setErrorEmail('Please enter your email.'); }
+        else { setErrorEmail('') }
+
+        if (password.length < 6) { setErrorPassword('Password should be at least 6 characters.'); }
+        else { setErrorPassword('') }
+
+        try {
+            await signUp(email, password)
+            navigate('/NETFLIX')
         }
-        else {
-            setErrorPassword('')
+        catch (error) {
+            console.log(error)
         }
 
     }
@@ -53,13 +67,22 @@ const SignUp = () => {
                         <h1 className='font-bold text-4xl mb-6'> Sign Up </h1>
                         <form className='w-full h-full'>
                             <input
+                                onChange={handleNameChange}
+                                type='text'
+                                placeholder='Name'
+                                required
+                                className='w-full h-12 my-2 px-4 bg-[#333333] focus:bg-[#454545] rounded-md outline-none focus:border-b-2 border-[#e50914]'
+                            />
+                            <p className='text-[#e50914] text-xs pl-2 font-bold'>
+                                {errorName}
+                            </p>
+                            <input
                                 onChange={handleEmailChange}
                                 type='email'
                                 placeholder='Email'
                                 required
                                 className='w-full h-12 my-2 px-4 bg-[#333333] focus:bg-[#454545] rounded-md outline-none focus:border-b-2 border-[#e50914]'
                             />
-
                             <p className='text-[#e50914] text-xs pl-2 font-bold'>
                                 {errorEmail}
                             </p>
@@ -92,9 +115,9 @@ const SignUp = () => {
                                 </p>
                                 <p className='text-sm text-[#8c8c8c] hover:underline'>Need help?</p>
                             </div>
-                            <div className='w-full flex mt-20'>
+                            <div className='w-full flex mt-10'>
                                 <h2 className='text-[#8c8c8c] text-base mr-1'> I already have an account  </h2>
-                                <NavLink to='signin' className='hover:underline'>
+                                <NavLink to='/signin' className='hover:underline'>
                                     Sign In
                                 </NavLink>
                             </div>
