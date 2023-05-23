@@ -1,0 +1,7 @@
+export { default as Navbar } from './Navbar'
+export { default as Main } from './Main'
+export { default as Row } from './Row'
+export { default as CardMovie } from './CardMovie'
+export { default as Protected } from './Protected'
+export { default as SaveShows } from './SaveShows'
+export { default as AccountMovie } from './AccountMovie'
