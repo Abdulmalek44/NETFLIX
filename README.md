@@ -9,4 +9,3 @@ React.js, Tailwind CSS, TMDB API, Firebase.
 
 For setup instructions and more details, please refer to the full documentation.
 
-This project is licensed under the MIT License. Contributions are welcome!
