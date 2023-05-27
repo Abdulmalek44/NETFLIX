@@ -1,4 +1,5 @@
-Netflix Clone
+### `Netflix Clone`
+
 This is a Netflix clone built with React.js, Tailwind CSS, and the TMDB API. The website allows users to browse and stream movies from a wide selection of titles. It also includes Google authentication for seamless sign-in and sign-up using Firebase, and Firestore to save user preferences and watch history.
 
 Features
