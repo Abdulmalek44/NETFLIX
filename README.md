@@ -16,6 +16,9 @@ This is a Netflix website built with React.js, Tailwind CSS, and the TMDB API. T
 - Firebase: Platform for authentication and hosting
 - Firestore: NoSQL database for storing user data and preferences
 
+
+Project Link: [Adidas Ecommerce](https://abdulmalek44.github.io/NETFLIX)
+
 For setup instructions and more details,You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 
